@@ -1,4 +1,4 @@
-package se.lexicon;
+package model;
 
 import org.junit.jupiter.api.Test;
 

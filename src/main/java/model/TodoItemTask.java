@@ -1,4 +1,6 @@
-package se.lexicon;
+package model;
+
+import java.util.Objects;
 
 public class TodoItemTask {
     private int id;
@@ -52,9 +54,20 @@ public class TodoItemTask {
         this.assigned = assignee != null;
     }
 
-    public String getSummary() {
-        return String.format("{id: %d, assigned: %b, todoItem: %s, assignee: %s}",
-                id, assigned, todoItem.getSummary(), assignee != null ? assignee.getSummary() : "null");
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if(o == null || getClass() != o.getClass()) return false;
+        TodoItemTask that = (TodoItemTask) o;
+        return id == that.id &&
+                assigned == that.assigned &&
+                Objects.equals(todoItem, that.todoItem) &&
+                Objects.equals(assignee, that.assignee);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, assigned, todoItem, assignee);
     }
 }
 
