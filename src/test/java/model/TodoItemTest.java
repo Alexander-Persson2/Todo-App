@@ -13,12 +13,12 @@ public class TodoItemTest {
         Person creator = new Person(1, "Kent", "Persson", "kent.Persson@example.com");
         TodoItem todoItem = new TodoItem(1, "Test Title", "Test Description", LocalDate.of(2023, 12, 31), false, creator);
 
-        assertEquals(1, todoItem.getId());
+        assertEquals(1, todoItem.getTodo_id());
         assertEquals("Test Title", todoItem.getTitle());
         assertEquals("Test Description", todoItem.getDescription());
         assertEquals(LocalDate.of(2023, 12, 31), todoItem.getDeadline());
         assertFalse(todoItem.isDone());
-        assertEquals(creator, todoItem.getCreator());
+        assertEquals(creator, todoItem.getAssignee_id());
     }
 
     @Test

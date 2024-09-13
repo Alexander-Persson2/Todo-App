@@ -5,18 +5,16 @@ import java.util.Objects;
 public class Person {
     private final int id;
     private String firstName;
-    private String lastName;
-    private String email;
-    private AppUser credentials;
+    private String lastName;;
 
-    public Person(int id, String firstName, String lastName, String email) {
-        if (firstName == null || lastName == null || email == null) {
+
+    public Person(int id, String firstName, String lastName) {
+        if (firstName == null || lastName == null) {
             throw new IllegalArgumentException("Fields cannot be null");
         }
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
     }
 
     public int getId() {
@@ -46,27 +44,15 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        if (email == null) {
-            throw new IllegalArgumentException("Email cannot be null");
-        }
-        this.email = email;
-    }
-
-   @Override
+    @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", credentials=" + credentials +
                 '}';
-   }
+    }
 
    @Override
     public boolean equals(Object o) {
@@ -75,14 +61,13 @@ public class Person {
         Person person = (Person) o;
         return id == person.id &&
                 Objects.equals(firstName, person.firstName) &&
-                Objects.equals(lastName, person.lastName) &&
-                Objects.equals(email, person.email) &&
-                Objects.equals(credentials, person.credentials);
+                Objects.equals(lastName, person.lastName);
+
    }
 
    @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, email, credentials);
+        return Objects.hash(id, firstName, lastName,);
    }
 
 }
