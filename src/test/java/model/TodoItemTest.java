@@ -18,7 +18,7 @@ public class TodoItemTest {
         assertEquals("Test Description", todoItem.getDescription());
         assertEquals(LocalDate.of(2023, 12, 31), todoItem.getDeadline());
         assertFalse(todoItem.isDone());
-        assertEquals(creator, todoItem.getAssignee_id());
+        assertEquals(creator, todoItem.getAssignee());
     }
 
     @Test

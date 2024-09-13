@@ -9,9 +9,9 @@ public class TodoItem {
     private String description;
     private LocalDate deadline;
     private boolean done;
-    private int assignee_id;
+    private Person assignee;
 
-    public TodoItem(int todo_id, String title, String description, LocalDate deadline, boolean done, int assignee_id) {
+    public TodoItem(int todo_id, String title, String description, LocalDate deadline, boolean done, Person assignee) {
         if (title == null || title.isEmpty() || deadline == null) {
             throw new IllegalArgumentException("Fields cannot be null or empty");
         }
@@ -20,7 +20,7 @@ public class TodoItem {
         this.description = description;
         this.deadline = deadline;
         this.done = done;
-        this.assignee_id = assignee_id;
+        this.assignee = assignee;
     }
 
     public int getTodo_id() {
@@ -69,12 +69,12 @@ public class TodoItem {
         this.done = done;
     }
 
-    public int getAssignee_id() {
-        return assignee_id;
+    public Person getAssignee() {
+        return assignee;
     }
 
-    public void setAssignee_id(int assignee_id) {
-        this.assignee_id = assignee_id;
+    public void setAssignee(Person assignee) {
+        this.assignee = assignee;
     }
 
     public boolean isOverdue() {
@@ -89,7 +89,7 @@ public class TodoItem {
                 ", description='" + description + '\'' +
                 ", deadline=" + deadline +
                 ", done=" + done +
-                ", assignee_id=" + assignee_id +
+                ", assignee=" + (assignee != null ? assignee.getId() : null) +
                 '}';
     }
 
@@ -100,7 +100,7 @@ public class TodoItem {
         TodoItem todoItem = (TodoItem) o;
         return todo_id == todoItem.todo_id &&
                 done == todoItem.done &&
-                assignee_id == todoItem.assignee_id &&
+                assignee == todoItem.assignee &&
                 Objects.equals(title, todoItem.title) &&
                 Objects.equals(description, todoItem.description) &&
                 Objects.equals(deadline, todoItem.deadline);
@@ -108,7 +108,7 @@ public class TodoItem {
 
     @Override
     public int hashCode() {
-        return Objects.hash(todo_id, title, description, deadline, done, assignee_id);
+        return Objects.hash(todo_id, title, description, deadline, done, assignee);
     }
 }
 
